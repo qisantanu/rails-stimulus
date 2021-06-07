@@ -1,0 +1,6 @@
+<h1>This page is Stimulated</h1>
+
+<%= link_to "Increment", "#", data: { reflex: "click->Item#increment", step: 1, count: @count.to_i }, style: "margin-right: 10px" %>
+<span><%= @count.to_i %></span>
+<%= link_to "Decrement", "#", data: { reflex: "click->Item#decrement", step: 1, count: @count.to_i }, style: "margin-left: 10px" %>
+

@@ -1,0 +1,34 @@
+<h1>This ITEM page is Stimulated</h1>
+
+<%= link_to "Add item", "#", data: { reflex: "click->Item#create", item_name: "Ruby" }, style: "display: none;" %>
+
+
+<h3>Add Item</h3>
+<div data-controller="item">
+<div id="#success" style="color: green;"></div>
+<%= form_with model: @item, data: { reflex: "submit->ItemReflex#create" } do |form| %>
+  <% binding.pry %>
+  <% if @item.errors.any? %>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= form.text_field :name, placeholder: "Type item's name" %>
+    <%= form.submit "Save" %>
+  </div>
+
+<% end %>
+</div>
+
+<p style="margin-top: 20px">Item List</p>
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <%= item.name %>
+      <%= link_to "Delete", "#", data: { reflex: "click->Item#delete", item_id: item.id }, style: "margin-left: 10px" %>
+    </li>
+  <% end %>
+</ul>
